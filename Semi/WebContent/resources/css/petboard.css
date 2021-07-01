@@ -1,0 +1,212 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  /* border : 1px solid black; */
+}
+input {
+  display: none;
+}
+
+.contentBox {
+  width: 100%;
+  text-align: center;
+}
+
+.top-content {
+  background-color: rgb(243, 243, 243);
+  width: 100%;
+  margin: 0 0 20px 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+label {
+  display: inline-block;
+  height: 100%;
+  margin: 0 10px;
+  line-height: 60px;
+  font-size: 18px;
+  color: gray;
+  cursor: pointer;
+  transition: color 0.5s;
+}
+label:hover {
+  color: black;
+}
+
+.photo-gallery {
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+/* 이미지 담아주는 div의 형태 구현 */
+.pic {
+  position: relative;
+  height: 230px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+/* 이미지 크기 선택 */
+.pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: 0.5s;
+}
+
+#check1:checked ~ .contentBox .photo-gallery .pic {
+  opacity: 1;
+  transform: scale(1);
+  position: relative;
+  transition: 0.5s;
+}
+#check2:checked ~ .contentBox .photo-gallery .wait {
+  opacity: 1;
+  transform: scale(1);
+  position: relative;
+}
+
+#check2:checked ~ .contentBox .photo-gallery .after {
+  opacity: 0;
+  transform: scale(0);
+  position: absolute;
+  transition: 0s;
+}
+
+#check3:checked ~ .contentBox .photo-gallery .after {
+  opacity: 1;
+  transform: scale(1);
+  position: relative;
+}
+
+#check3:checked ~ .contentBox .photo-gallery .wait {
+  opacity: 0;
+  transform: scale(0);
+  position: absolute;
+  transition: 0s;
+}
+
+/* 검은창 띄우는 부분 */
+
+.modal1 {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.25s ease-out;
+    z-index: 15;
+}
+
+.modal1.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.full-img{
+    position: absolute;
+    width : 50%;    
+    height: 700px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(1);
+    transition: all 0.25s ease-out;
+    display: flex;
+  	justify-content: space-between;
+}
+
+/* .full-img.open{
+    transform: translate(-50%,-50%) scale(1);
+} */
+
+.modalImg {
+	position: relative;
+	width: 50%;
+	height: 100%;
+	background-color: gray;
+} 
+
+.modalImg img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	padding: 10px;	
+}
+
+.modalText {
+	position: relative;
+	width: 50%;
+	background-color: white;
+}
+
+.modal-text-title{
+  text-align : center;
+  width: 100%;
+  padding: 10px;
+  background: #f5f5f5;
+  color: #333;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  
+}
+
+.modal-text-title span{
+	font-size: 22px;
+	letter-spacing: 1px;
+  	font-weight: 300;	
+}
+
+.modal-text-content {
+	
+	width: 100%;
+	padding : 30px;
+	margin-bottom: 10px;
+}
+
+.modalText div input{
+	display : inline;
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.modal-button {
+  width: 140px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+.modal-button:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
